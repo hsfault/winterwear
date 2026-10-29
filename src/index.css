@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night: #0a2b24;
+  --color-night-deep: #07201b;
+  --color-maroon: #4a0e1c;
+  --color-gold: #c9a24b;
+  --color-gold-soft: #e3c98a;
+  --color-cream: #f4ede0;
+  --color-ink: #14110f;
+  --color-frost: #dce8e4;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
+  }
+  body {
+    margin: 0;
+    background: var(--color-night);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Reusable utilities */
+@utility container-x {
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+  margin-inline: auto;
+  max-width: 90rem;
+  width: 100%;
+}
+
+@utility tap {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@utility eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
